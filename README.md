@@ -25,7 +25,6 @@ O MelWare busca ajudar jovens e adultos a descobrirem seu caminho no universo da
 - HTML5, CSS3, JavaScript
 - Bootstrap 5
 - Pixel Art (elementos visuais)
-- *(adicione frameworks/backends se houver)*
 
 ---
 
