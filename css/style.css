@@ -45,6 +45,24 @@ p {
     font-weight: bold;
 }
 
+.logo-mobile {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .logo-mobile {
+        display: block;
+    }
+
+    .logo-mobile img {
+        width: 100px;
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+}
+
 .nav-link:hover {
     color: var(--bg-main);
     text-decoration: underline;
@@ -83,7 +101,6 @@ p {
 }
 
 
-/* Abelha voando à direita do card */
 .hero-floating-bee {
     position: absolute;
     right: -25px;
@@ -115,7 +132,6 @@ p {
     }
 }
 
-/* COLMEIA / LADO DIREITO */
 .hero-right {
     position: relative;
     display: flex;
@@ -129,21 +145,18 @@ p {
     display: flex;
 }
 
-/* Limita tamanho em desktops grandes */
 @media (min-width: 1200px) {
     .hive-image {
         max-width: 480px;
     }
 }
 
-/* Ajuste da coluna em mobile */
 @media (max-width: 991.98px) {
     .hero-right {
         margin-top: 3rem;
     }
 }
 
-/* Container de fundo em volta de tudo, para cantos arredondados */
 .hero-box {
     background-color: #2a283f;
     border-radius: 18px;
@@ -158,7 +171,7 @@ p {
 }
 
 .card-programe-seu-futuro {
-    width: 70%;
+    width: 98%;
 }
 
 .card-teoria-portfolio,
@@ -211,109 +224,187 @@ p {
 }
 
 .background-bubbles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .background-bubbles li {
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  animation: bubble 25s linear infinite;
-  bottom: -150px;
-  border-radius: 50%;
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    animation: bubble 25s linear infinite;
+    bottom: -150px;
+    border-radius: 50%;
 }
 
-/* posições e tamanhos variados */
 .background-bubbles li:nth-child(1) {
-  left: 25%;
-  width: 40px;
-  height: 40px;
-  animation-duration: 18s;
-}
-.background-bubbles li:nth-child(2) {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-duration: 12s;
-  animation-delay: 2s;
-}
-.background-bubbles li:nth-child(3) {
-  left: 70%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 20s;
-  animation-delay: 4s;
-}
-.background-bubbles li:nth-child(4) {
-  left: 40%;
-  width: 50px;
-  height: 50px;
-  animation-duration: 22s;
-  animation-delay: 0s;
-}
-.background-bubbles li:nth-child(5) {
-  left: 65%;
-  width: 60px;
-  height: 60px;
-  animation-duration: 27s;
-  animation-delay: 1s;
-}
-.background-bubbles li:nth-child(6) {
-  left: 75%;
-  width: 18px;
-  height: 18px;
-  animation-duration: 15s;
-  animation-delay: 2s;
-}
-.background-bubbles li:nth-child(7) {
-  left: 35%;
-  width: 24px;
-  height: 24px;
-  animation-duration: 17s;
-  animation-delay: 3s;
-}
-.background-bubbles li:nth-child(8) {
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 19s;
-  animation-delay: 5s;
-}
-.background-bubbles li:nth-child(9) {
-  left: 20%;
-  width: 22px;
-  height: 22px;
-  animation-duration: 16s;
-  animation-delay: 1s;
-}
-.background-bubbles li:nth-child(10) {
-  left: 80%;
-  width: 25px;
-  height: 25px;
-  animation-duration: 20s;
-  animation-delay: 2s;
+    left: 25%;
+    width: 40px;
+    height: 40px;
+    animation-duration: 18s;
 }
 
-/* animação principal */
+.background-bubbles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.background-bubbles li:nth-child(3) {
+    left: 70%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 20s;
+    animation-delay: 4s;
+}
+
+.background-bubbles li:nth-child(4) {
+    left: 40%;
+    width: 50px;
+    height: 50px;
+    animation-duration: 22s;
+    animation-delay: 0s;
+}
+
+.background-bubbles li:nth-child(5) {
+    left: 65%;
+    width: 60px;
+    height: 60px;
+    animation-duration: 27s;
+    animation-delay: 1s;
+}
+
+.background-bubbles li:nth-child(6) {
+    left: 75%;
+    width: 18px;
+    height: 18px;
+    animation-duration: 15s;
+    animation-delay: 2s;
+}
+
+.background-bubbles li:nth-child(7) {
+    left: 35%;
+    width: 24px;
+    height: 24px;
+    animation-duration: 17s;
+    animation-delay: 3s;
+}
+
+.background-bubbles li:nth-child(8) {
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 19s;
+    animation-delay: 5s;
+}
+
+.background-bubbles li:nth-child(9) {
+    left: 20%;
+    width: 22px;
+    height: 22px;
+    animation-duration: 16s;
+    animation-delay: 1s;
+}
+
+.background-bubbles li:nth-child(10) {
+    left: 80%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 20s;
+    animation-delay: 2s;
+}
+
 @keyframes bubble {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(-1000px) scale(0.8);
-    opacity: 0;
-  }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-1000px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+
+    .cards-banner {
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 24px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    section.cards-banner>.d-flex.justify-content-center {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 24px;
+    }
+
+    section.cards-banner>.d-flex.justify-content-center>.card-colmeia {
+        order: -1;
+        width: 100% !important;
+        border-radius: 12px !important;
+        display: flex;
+        justify-content: end !important;
+        align-items: center !important;
+    }
+
+    section.cards-banner>.d-flex.justify-content-center>.d-flex.flex-column {
+        width: 100% !important;
+        order: 2;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .card-programe-seu-futuro {
+        width: 100% !important;
+        border-radius: 12px !important;
+    }
+
+    .card-programe-seu-futuro .hero-title {
+        font-size: 30px !important;
+    }
+
+    .card-programe-seu-futuro .hero-subtitle {
+        font-size: 16px !important;
+    }
+
+    .card-teoria-portfolio {
+        width: 100% !important;
+        border-radius: 12px !important;
+        margin-top: 0% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .hive-image {
+        max-width: 280px;
+    }
+}
+
+.cards-tree {
+    background-color: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cards-tree:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }

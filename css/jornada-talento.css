@@ -1,0 +1,91 @@
+
+.tip:hover::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 130%;
+  white-space: nowrap;
+  background: rgba(17, 24, 39, 0.95); 
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.mascot-pop {
+  animation: pop 0.35s ease-out both;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.badge{
+    color: var(--accent);
+    font-size: 16px;
+}
+
+.card-body{
+    background-color: var(--bg-card);
+}
+
+.locked-box {
+    background: #1e1e28;
+    border: 2px dashed #ffb300;
+    color: #fff;
+}
+
+.projeto-final-card {
+    background: #ffb300;
+    color: #1a1a1a;
+    border: 3px solid #ffce4e;
+}
+
+.projeto-header .msg {
+    background: #ffe0a3;
+    color: #1a1a1a;
+}
+
+.stage {
+    background: #ff9800;
+    color: #1a1a1a;
+}
+
+.stage ul {
+    padding-left: 20px;
+}
+
+.stage li {
+    margin-bottom: 8px;
+}
+
+button.btn-dark {
+    background: #1e1e1e !important;
+    border: none;
+}
+
+#mascotBubble {
+  height: auto !important;
+  font-family: "Press Start 2P", cursive;
+  font-size: 13px;           
+  line-height: 1.7;  
+  padding: 18px !important;
+  letter-spacing: 0.5px;      
+  word-break: break-word;   
+}
+
+#mascotBubble span {
+  color: #facc15 !important;
+  font-weight: bold;
+}
