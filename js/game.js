@@ -3,11 +3,11 @@ console.log("game.js carregado!")
 const STORAGE_KEY = 'talent_journey_v1'
 
 const LEVELS = [
-  { lvl: 1, name: 'Aprendiz', xp: 0 },
-  { lvl: 2, name: 'Explorador', xp: 100 },
-  { lvl: 3, name: 'Praticante', xp: 250 },
-  { lvl: 4, name: 'Desenvolvedor', xp: 500 },
-  { lvl: 5, name: 'Mentor Júnior', xp: 900 }
+  { lvl: 1, name: 'Abelha Estagiária', xp: 0 },
+  { lvl: 2, name: 'Operário do Código', xp: 100 },
+  { lvl: 3, name: 'Engenheiro da Colmeia', xp: 250 },
+  { lvl: 4, name: 'Arquiteto do Néctar Digital', xp: 500 },
+  { lvl: 5, name: 'Mestre Rainha Dev', xp: 900 }
 ]
 
 const MISSIONS = [
@@ -74,7 +74,7 @@ function getLevel(xp) {
 }
 
 function formatRemaining(xp, next) {
-  if (!next) return 'Nível máximo alcançado. Continue brilhando! ✨'
+  if (!next) return 'Você alcançou o topo da colmeia tecnológica. Agora é referência até para as abelhas devs!'
   return `Faltam ${next.xp - xp} XP para o próximo nível.`
 }
 
@@ -187,9 +187,9 @@ function missionCard(m) {
         <small class="text-white-50">
           ${isRepeatable ? `Concluída ${doneCount}x` : (doneCount ? 'Concluída' : 'Disponível')}
         </small>
-        <button class="btn btn-sm ${canDo ? 'btn-success' : 'btn-secondary'}"
+        <button class="btn btn-sm ${canDo ? 'btn-concluir' : 'btn-concluido'}"
           ${!canDo ? 'disabled' : ''}>
-          ${canDo ? 'Concluir' : (isRepeatable ? 'Limite diário/semana' : 'Já concluída')}
+          ${canDo ? 'Marcar como oncluído' : (isRepeatable ? 'Limite diário/semana' : 'Já concluída')}
         </button>
       </div>
     </div>

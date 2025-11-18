@@ -6,7 +6,7 @@
     --text-main: #f8f5ff;
     --text-muted: #d0cbe9;
     --accent: #ffb531;
-    --accent-dark: #de7a16;
+    --accent-dark: #4A2E14;
 }
 
 * {
@@ -197,7 +197,7 @@ p {
 .ticker {
     display: inline-block;
     white-space: nowrap;
-    animation: scrollText 5s linear infinite;
+    animation: scrollText 10s linear infinite;
 }
 
 .ticker span {
