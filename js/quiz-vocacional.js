@@ -66,76 +66,72 @@ document.addEventListener("DOMContentLoaded", function () {
     let selecaoAtual = null
 
     function mostrarPergunta() {
-        selecaoAtual = null
-        const container = document.querySelector("#quiz-container")
-        const perguntaAtual = perguntas[indicePergunta]
-        const totalPerguntas = perguntas.length
-        const progresso = ((indicePergunta + 1) / totalPerguntas) * 100
+        selecaoAtual = null;
+        const container = document.querySelector("#quiz-container");
+        const perguntaAtual = perguntas[indicePergunta];
+        const totalPerguntas = perguntas.length;
+        const progresso = ((indicePergunta + 1) / totalPerguntas) * 100;
 
         container.innerHTML = `
-      <div class="quiz-card text-white">
+    <div class="quiz-card text-white">
 
-        <!-- Barra de Progresso -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <div class="flex-grow-1 me-3">
-            <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.15);">
-              <div class="progress-bar" role="progressbar"
-                   style="width: ${progresso}%; background-color: #facc15;"></div>
+            <div class="flex-grow-1 me-3">
+                <div class="progress" style="height: 8px; background-color: rgba(255,255,255,0.15);">
+                    <div class="progress-bar" role="progressbar"
+                        style="width: ${progresso}%; background-color: #facc15;"></div>
+                </div>
             </div>
-          </div>
         </div>
 
-        <!-- Texto Questão X/Y -->
         <p class="text-center fw-bold mb-2">
-          Questão ${indicePergunta + 1}/${totalPerguntas}
+            Questão ${indicePergunta + 1}/${totalPerguntas}
         </p>
 
-        <!-- Pergunta -->
         <p class="d-flex justify-content-center fw-bold mb-4 text-center">
-          ${perguntaAtual.texto}
+            ${perguntaAtual.texto}
         </p>
 
         <div id="opcoes">
-          ${perguntaAtual.opcoes
+            ${perguntaAtual.opcoes
                 .map(
                     (opcao, index) => `
-              <div class="opcao d-flex align-items-center" onclick="selecionar(${index})">
-                <img src="img/favo.png" class="me-2 favo-icon" alt="favo"> ${opcao.texto}
-              </div>
-            `
+                    <div class="opcao d-flex align-items-center" onclick="selecionar(${index})">
+                        <img src="img/favo.png" class="me-2 favo-icon" alt="favo"> ${opcao.texto}
+                    </div>
+                `
                 )
                 .join("")}
         </div>
 
         <div class="mt-4 d-flex justify-content-between mb-2">
-          <img src="img/btn-voltar.png" alt="Voltar" class="btn-nav"
-               onclick="voltarPergunta()"
-               style="cursor:pointer; ${indicePergunta === 0 ? "opacity: 0.5; pointer-events: none;" : ""}" />
+            <img src="img/btn-voltar.png" alt="Voltar" class="btn-nav"
+                onclick="voltarPergunta()"
+                style="cursor:pointer; ${indicePergunta === 0 ? "opacity: 0.5; pointer-events: none;" : ""}" />
 
-          <img src="img/btn-avancar.png" alt="Avançar" class="btn-nav" id="btn-avancar"
-               style="cursor:pointer; opacity: 0.5; pointer-events: none;"
-               onclick="confirmarResposta()" />
+            <img src="img/btn-avancar.png" alt="Avançar" class="btn-nav" id="btn-avancar"
+                style="cursor:pointer; opacity: 0.5; pointer-events: none;"
+                onclick="confirmarResposta()" />
         </div>
 
         <a href="#" id="pular-quiz-link" class="link-pular-quiz">Já sabe sua vocação? Pule o quiz aqui!</a>
-      </div>
-    `
+    </div>
+    `;
 
-        const avancarBtn = document.getElementById("btn-avancar")
+        const avancarBtn = document.getElementById("btn-avancar");
         if (avancarBtn) {
-            avancarBtn.addEventListener("mouseenter", () => (avancarBtn.style.transform = "translateY(-3px)"))
-            avancarBtn.addEventListener("mouseleave", () => (avancarBtn.style.transform = "translateY(0)"))
+            avancarBtn.addEventListener("mouseenter", () => (avancarBtn.style.transform = "translateY(-3px)"));
+            avancarBtn.addEventListener("mouseleave", () => (avancarBtn.style.transform = "translateY(0)"));
         }
 
-        const pularLink = document.getElementById("pular-quiz-link")
+        const pularLink = document.getElementById("pular-quiz-link");
         if (pularLink) {
             pularLink.addEventListener("click", function (e) {
-                e.preventDefault()
-                iniciarJornada()
-            })
+                e.preventDefault();
+                iniciarJornada();
+            });
         }
     }
-
 
     window.selecionar = function (index) {
         selecaoAtual = perguntas[indicePergunta].opcoes[index]
@@ -239,8 +235,8 @@ document.addEventListener("DOMContentLoaded", function () {
           Você possui características que se alinham com esta carreira na tecnologia.<br>
           Explore mais sobre ela e comece sua jornada!
         </p>
-       <button class="btn btn-warning mt-3 quiz-btn" onclick="iniciarJornada()">INICIAR MINHA JORNADA</button>
-<button class="btn btn-outline-warning mt-3 ms-2 quiz-btn" onclick="refazerQuiz()">REFAZER QUIZ</button>
+       <button class="btn btn-warning mt-3 quiz-btn " onclick="iniciarJornada()">INICIAR MINHA JORNADA</button>
+<button class="btn btn-outline-warning mt-3 ms-2 quiz-btn-refazer" onclick="refazerQuiz()">REFAZER QUIZ</button>
       </div>
     `
     }
@@ -291,17 +287,12 @@ document.addEventListener("DOMContentLoaded", function () {
             finalProject.style.display = "block"
         }
 
-        const etapa2 = document.getElementById("etapa2")
-        if (etapa2) {
-            etapa2.style.display = "block"
-        }
     }
 
     const salvo = localStorage.getItem(STORAGE_KEY)
     const jornadaIniciada = localStorage.getItem(JORNADA_KEY) === "true"
 
     document.getElementById("final-project").style.display = "none"
-    document.getElementById("etapa2").style.display = "none"
 
     if (jornadaIniciada) {
         const quizSection = document.getElementById("quiz-section")
@@ -314,11 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const finalProject = document.getElementById("final-project")
         if (finalProject) {
             finalProject.style.display = "block"
-        }
-
-        const etapa2 = document.getElementById("etapa2")
-        if (etapa2) {
-            etapa2.style.display = "block"
         }
 
     } else if (salvo) {

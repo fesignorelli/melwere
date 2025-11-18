@@ -1,147 +1,275 @@
 .tip:hover::after {
-  content: attr(aria-label);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 130%;
-  white-space: nowrap;
-  background: rgba(17, 24, 39, 0.95);
-  color: #fff;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  z-index: 1000;
+    content: attr(aria-label);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 130%;
+    white-space: nowrap;
+    background: rgba(17, 24, 39, 0.95);
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
 }
 
 .mascot-pop {
-  animation: pop 0.35s ease-out both;
-  background-color: var(--accent-dark);
-  border: var(--accent) 2px solid;
+    animation: pop 0.35s ease-out both;
+    background-color: var(--accent-dark);
+    border: var(--accent) 2px solid;
 }
 
 @keyframes pop {
-  0% {
-    transform: scale(0.85);
-    opacity: 0;
-  }
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
 
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .badge {
-  color: var(--accent);
-  font-size: 16px;
+    color: var(--accent);
+    font-size: 16px;
 }
 
 .card-body {
-  background-color: var(--bg-card);
+    background-color: var(--bg-card);
+}
+
+.card {
+    border: var(--accent) 1px solid;
 }
 
 .locked-box {
-  background: #1e1e28;
-  border: 2px dashed #ffb300;
-  color: #fff;
+    background: #1e1e28;
+    border: 2px dashed #ffb300;
+    color: #fff;
 }
 
 .projeto-final-card {
-  background: #ffb300;
-  color: #1a1a1a;
-  border: 3px solid #ffce4e;
+    background: #ffb300;
+    color: #1a1a1a;
+    border: 3px solid #ffce4e;
 }
 
 .projeto-header .msg {
-  background: #ffe0a3;
-  color: #1a1a1a;
+    background: #ffe0a3;
+    color: #1a1a1a;
 }
 
 .stage {
-  background: #ff9800;
-  color: #1a1a1a;
+    background: #ff9800;
+    color: #1a1a1a;
 }
 
 .stage ul {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 .stage li {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 button.btn-dark {
-  background: #1e1e1e !important;
-  border: none;
+    background: #1e1e1e !important;
+    border: none;
 }
 
 #mascotBubble {
-  height: auto !important;
-  font-family: "Press Start 2P", cursive;
-  font-size: 13px;
-  line-height: 1.7;
-  padding: 18px !important;
-  letter-spacing: 0.5px;
-  word-break: break-word;
+    height: auto !important;
+    font-family: "Press Start 2P", cursive;
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 18px !important;
+    letter-spacing: 0.5px;
+    word-break: break-word;
+    background-color: var(--bg-card);
+    border: 2px solid var(--accent);
+    color: white;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.close-bubble {
+    position: absolute;
+    top: -13px; 
+    right: -5px; 
+    cursor: pointer;
+    z-index: 10; 
+    background-color: #1a1a1a;
+    border: 3px solid #facc15; 
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-out;
+}
+
+.close-bubble:hover {
+    background-color: #3E2723;
+    border-color: #fff;
+    transform: scale(1.1);
+}
+
+.close-bubble i[data-lucide] {
+    stroke-width: 3.5; 
+    width: 20px; 
+    height: 20px; 
+    color: #facc15; 
+    transition: color 0.2s ease;
+}
+
+.close-bubble:hover i[data-lucide] {
+    color: #fff; 
+}
+
+.hidden {
+    display: none !important;
 }
 
 #mascotBubble span {
-  color: #facc15 !important;
-  font-weight: bold;
+    color: #facc15 !important;
+    font-weight: bold;
+}
+
+#mascotBubble::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    bottom: 20px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid var(--accent);
 }
 
 .bee-float {
-  animation: beeFloat 3s ease-in-out infinite;
+    animation: beeFloat 3s ease-in-out infinite;
 }
 
 @keyframes beeFloat {
-  0% {
-    transform: translateY(0px);
-  }
+    0% {
+        transform: translateY(0px);
+    }
 
-  50% {
-    transform: translateY(-10px);
-  }
+    50% {
+        transform: translateY(-10px);
+    }
 
-  100% {
-    transform: translateY(0px);
-  }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .progress-bar {
-  background-color: var(--accent);
+    background-color: var(--accent);
 }
 
 .nivel {
-  background-color: var(--accent-dark);
-  border: var(--accent) 2px solid;
+    background-color: var(--bg-card);
+    border: var(--accent) 2px solid;
 }
 
 .font-level {
-  font-size: 20px;
-  font-family: 'Press Start 2P';
-  text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
 }
 
 .btn-concluir {
-  background-color: transparent;
-  color: var(--accent);
-  font-size: 16px;
-  font-weight: bold;
-  border: var(--accent) 2px solid;
+    background-color: var(--accent);
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .btn-concluir:hover {
-  background-color: var(--accent);
-  border: var(--accent) 2px solid;
-  color: var(--bg-main);
-  font-size: 16px;
+    background-color: var(--accent-dark);
+    color: var(--bg-main);
+    font-size: 16px;
 }
 
-.btn-concluido {
-  color: #22C55E !important;
-  font-weight: bold;
-  border: none;
+.mission-icon-done {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #22C55E;
+    font-size: 1.5rem;
+}
+
+.mission-card-wrap {
+    transition: all 0.5s ease-out;
+    opacity: 1;
+}
+
+.mission-completed {
+    opacity: 0.8;
+    border: 2px solid #22C55E;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4) !important;
+}
+
+.card-img-top {
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.card-link-overlay:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.mascot-container-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    gap: 15px;
+    max-width: 800px;
+    pointer-events: none;
+}
+
+.mascot-container-fixed>* {
+    pointer-events: auto;
+}
+
+.mascot-container-fixed img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.mascot-container-fixed img:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+@media (max-width: 768px) {
+    .mascot-container-fixed {
+        bottom: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+
+    .mascot-container-fixed img {
+        width: 80px;
+    }
+
+    #mascotBubble {
+        font-size: 11px;
+        padding: 10px !important;
+        max-width: 70%
+    }
 }

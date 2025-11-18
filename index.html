@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
     <section class="hero-wrapper">
         <nav class="navbar navbar-expand-lg px-3 py-2 rounded shadow mb-4 m-auto">
             <div class="container-fluid">
@@ -32,10 +34,9 @@
                         <img src="img/logo.png" alt="Logo" width="60" />
                     </div>
                     <ul class="navbar-nav mb-0 gap-4">
-                        <li class="nav-item"><a class="nav-link" href="#">Quiz</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Profissões</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Cursos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Selo de competência</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#quiz-section">Quiz</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#quem-somos">Quem somos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,7 +48,8 @@
                     <div
                         class="card-programe-seu-futuro p-4 rounded-start-4 rounded-end-0 h-100 shadow d-flex flex-column justify-content-center">
                         <h1 class="hero-title">PROGRAME SEU FUTURO</h1>
-                        <p class="hero-subtitle">Descubra sua vocação e decole na carreira de tecnologia!</p>
+                        <p class="hero-subtitle">O seu <strong class="text-warning">Mel</strong>hor começo no mundo
+                            tech.</p>
                     </div>
 
                     <div class="card-teoria-portfolio hero-card-wrapper mt-3 rounded-start-4 shadow">
@@ -55,7 +57,7 @@
                         <div>
                             <div class="hero-card-tag">DA TEORIA ATÉ SEU PORTFÓLIO</div>
                             <p class="hero-card-text mb-0">
-                                Não é só sobre descobrir sua vocação, é sobre construir ela. Este é o seu plano de ação,
+                                Não é só sobre descobrir sua vocação, é sobre construí-la. Este é o seu plano de ação,
                                 da teoria aos seus primeiros projetos.
                             </p>
                         </div>
@@ -88,6 +90,8 @@
                 <span><strong>MelWare</strong> – Futuro é agora. </span>
                 <span><strong>MelWare</strong> – Futuro é agora. </span>
                 <span><strong>MelWare</strong> – Futuro é agora. </span>
+                <span><strong>MelWare</strong> – Futuro é agora. </span>
+                <span><strong>MelWare</strong> – Futuro é agora. </span>
             </div>
         </div>
     </section>
@@ -100,7 +104,7 @@
                     <img src="img/about.png" alt="Sobre a MelWare" class="img-about img-fluid">
                 </div>
 
-                <div class="col-lg-7 text-white">
+                <div class="col-lg-7 text-white" id="quem-somos">
                     <h2 class="fw-bold mb-3">QUEM SOMOS?</h2>
 
                     <p class="mb-3 fs-5">
@@ -119,7 +123,6 @@
         <div class="container">
             <div class="row g-4">
 
-                <!-- CARD 1 - MISSÃO -->
                 <div class="col-md-4">
                     <div class="cards-tree h-100 p-4 text-white">
 
@@ -136,7 +139,6 @@
                     </div>
                 </div>
 
-                <!-- CARD 2 - VISÃO -->
                 <div class="col-md-4">
                     <div class="cards-tree h-100 p-4 text-white">
 
@@ -153,7 +155,6 @@
                     </div>
                 </div>
 
-                <!-- CARD 3 - VALORES -->
                 <div class="col-md-4">
                     <div class="cards-tree h-100 p-4 text-white">
 
@@ -173,7 +174,12 @@
         </div>
     </section>
 
+
     <section id="quiz-section" class="container quiz mx-auto ">
+        <div class="text-center mt-5 mb-2">
+            <h2 class="fw-bold text-white">DESCUBRA SUA VOCAÇÃO COM NOSSO QUIZ!</span></h2>
+        </div>
+
         <div class="container my-5">
             <div class="d-flex justify-content-center row">
                 <div class="cta-moldura position-relative text-center mb-4">
@@ -201,21 +207,19 @@
             </header>
 
 
-            <!-- Mascote -->
-            <div class="d-flex gap-3 mb-4">
-                <div>
-                    <img src="/img/abelha-idoso.webp" class="drop-shadow bee-float" width="150">
+            <div class="mascot-container-fixed">
+                <div class="bee-wrapper">
+                    <img src="img/abelha-idoso.webp" class="drop-shadow bee-float" width="120">
                 </div>
 
-                <div id="mascotBubble" class="mascot-pop p-3 rounded-3 shadow w-100">
+                <div id="mascotBubble" class="mascot-pop p-3 rounded-3 shadow">
+                    <span id="closeBubbleBtn" class="close-bubble"></span>
                     <p class="mb-0">
-                        Muito prazer! Eu sou o Vovô Favo. Vamos transformar conhecimento em XP e evolução juntos!
+                        Muito prazer! Eu sou o Vovô Favo. Vamos transformar conhecimento em XP!
                     </p>
                 </div>
             </div>
 
-
-            <!-- XP e Level -->
             <div class="nivel rounded-3 p-4 mb-5">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -232,16 +236,18 @@
                 </div>
                 <p id="nextLabel" class="mt-3">Faltam 100 XP para o próximo nível.</p>
 
-                <!-- Badges -->
                 <div class="mt-4">
                     <h5 class="fw-semibold mb-3">Badges</h5>
                     <div id="badges" class="d-flex flex-wrap gap-2"></div>
                 </div>
             </div>
 
-            <!-- Missões -->
             <section>
-                <h2 class="fs-5 fw-bold mb-3">Missões</h2>
+                <h2 class="fw-bold">Missões</h2>
+                <p class="fs-5">O trabalho duro traz a doçura! Dedique-se às suas Missões e será recompensado com Mel de
+                    Experiência (XP). Acumule este Mel valioso para evoluir seu Nível e liberar o acesso a <strong>O
+                        Favo
+                        Mestre!</strong></p>
                 <div id="missions" class="row gy-4"></div>
             </section>
         </div>
@@ -249,67 +255,102 @@
 
     <section id="final-project" class="container mt-5"></section>
 
-    <section id="etapa2" style="display: none;">
-        <div class="bg-warning p-4 rounded-4 text-dark">
-            <div class="d-flex align-items-center mb-3">
-                <img src="img/favos.png" alt="Favos" class="me-3" style="width: 60px;">
-                <h3 class="mb-0">ETAPA 2: Desenvolva o Projeto</h3>
+    <section class="py-5" id="depoimentos">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">HISTÓRIAS DA <span class="text-accent">COLMEIA</span></h2>
+                <p class="text-white">Veja o que quem já passou por aqui está construindo.</p>
             </div>
 
-            <div class="px-3">
-                <h5 class="fw-bold">Foco</h5>
-                <p>Agora é com você! Dedique-se ao desenvolvimento do seu projeto. Lembre-se de aplicar tudo o que
-                    aprendeu.</p>
-
-                <h5 class="fw-bold mt-4">Dicas</h5>
-                <ul>
-                    <li>O GitHub é seu currículo (Use desde o Dia 1)</li>
-                    <li>O README.md é a "capa" do seu projeto</li>
-                    <li>
-                        Peça ajuda em Fóruns Externos
-                        <ul>
-                            <li>O que você tentou fazer.</li>
-                            <li>O código que você usou (um print ou link do GitHub).</li>
-                            <li>Qual foi a mensagem de erro exata.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Ative o "Modo Debug":
-                        <ul>
-                            <li>Seu código vai quebrar. Isso não é falha, é o processo.</li>
-                            <li>Use as ferramentas de desenvolvedor do seu navegador (botão direito > "Inspecionar")
-                                para ver os erros no "Console".</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="text-center mt-4">
-                    <button class="btn btn-dark px-4 py-2 fs-5 fw-semibold rounded-pill">
-                        JÁ DESENVOLVI MEU PROJETO
-                    </button>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm testimonial-card">
+                        <div class="card-body-testimonial p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i data-lucide="quote" class="quote-icon"></i>
+                            </div>
+                            <p class="card-text flex-grow-1 testimonial-text">
+                                "Eu achava que programação não era pra mim. O Quiz Vocacional me mostrou o caminho do
+                                Front-end e hoje, 3 meses depois, terminei meu primeiro portfólio e consegui meu
+                                primeiro estágio!"
+                            </p>
+                            <div class="d-flex align-items-center mt-4 pt-3 testimonial-footer">
+                                <div
+                                    class="rounded-circle d-flex align-items-center justify-content-center me-3 testimonial-avatar">
+                                    <span>LC</span>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold text-white">Lucas Costa</h6>
+                                    <small class="text-white-50 testimonial-role">Estagiário Front-end</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm testimonial-card">
+                        <div class="card-body-testimonial p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i data-lucide="quote" class="quote-icon"></i>
+                            </div>
+                            <p class="card-text flex-grow-1 testimonial-text">
+                                "A metodologia prática da MelWare é incrível. Ao invés de só assistir aula, eu tive que
+                                colocar a mão na massa. O Projeto Final da ONG foi o diferencial na minha entrevista."
+                            </p>
+                            <div class="d-flex align-items-center mt-4 pt-3 testimonial-footer">
+                                <div
+                                    class="rounded-circle d-flex align-items-center justify-content-center me-3 testimonial-avatar">
+                                    <span>MA</span>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold text-white">Mariana Alves</h6>
+                                    <small class="text-white-50 testimonial-role">Dev Back-end Jr</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm testimonial-card">
+                        <div class="card-body-testimonial p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i data-lucide="quote" class="quote-icon"></i>
+                            </div>
+                            <p class="card-text flex-grow-1 testimonial-text">
+                                "O melhor de tudo é a comunidade. Não me senti sozinho em nenhum momento. O Vovô Favo dá
+                                umas dicas ótimas nas missões! Recomendo demais para quem está começando do zero."
+                            </p>
+                            <div class="d-flex align-items-center mt-4 pt-3 testimonial-footer">
+                                <div
+                                    class="rounded-circle d-flex align-items-center justify-content-center me-3 testimonial-avatar">
+                                    <span>JP</span>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold text-white">João Pedro</h6>
+                                    <small class="text-white-50 testimonial-role">Estudante Fullstack</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Scripts -->
+    <footer class="py-4 mt-5" style="border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container d-flex justify-content-center align-items-center gap-2">
+            <p class="mb-0 text-white-50 small">
+                &copy; 2025 <strong class="text-warning">MelWare</strong>. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/quiz-vocacional.js"></script>
     <script src="./js/game.js" defer></script>
 </body>
 
 </html>
-
-<!-- Bolhas no fundo -->
-<!-- <ul class="background-bubbles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul> -->
