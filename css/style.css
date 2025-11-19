@@ -6,6 +6,7 @@
     --accent: #ffb531;
     --accent-dark: #AE723B;
     --bg-progress-bar: #2B1E4A;
+    --orange: #F47701;
 }
 
 * {
@@ -454,4 +455,14 @@ p {
 
 .card-body-testimonial{
     border-radius: 15px;
+}
+
+.fs-5-responsive {
+    font-size: 16px !important; 
+}
+
+@media (min-width: 768px) {
+    .fs-5-responsive {
+        font-size: 20px !important;
+    }
 }

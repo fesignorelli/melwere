@@ -99,12 +99,12 @@ button.btn-dark {
 
 .close-bubble {
     position: absolute;
-    top: -13px; 
-    right: -5px; 
+    top: -13px;
+    right: -5px;
     cursor: pointer;
-    z-index: 10; 
+    z-index: 10;
     background-color: #1a1a1a;
-    border: 3px solid #facc15; 
+    border: 3px solid #facc15;
     border-radius: 50%;
     height: 35px;
     width: 35px;
@@ -121,15 +121,15 @@ button.btn-dark {
 }
 
 .close-bubble i[data-lucide] {
-    stroke-width: 3.5; 
-    width: 20px; 
-    height: 20px; 
-    color: #facc15; 
+    stroke-width: 3.5;
+    width: 20px;
+    height: 20px;
+    color: #facc15;
     transition: color 0.2s ease;
 }
 
 .close-bubble:hover i[data-lucide] {
-    color: #fff; 
+    color: #fff;
 }
 
 .hidden {
@@ -272,4 +272,404 @@ button.btn-dark {
         padding: 10px !important;
         max-width: 70%
     }
+}
+
+
+.final-project-unlocked {
+    background-color: var(--bg-card);
+    border: 10px solid var(--orange);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.final-project-header {
+    background-color: var(--orange);
+    color: var(--bg-card);
+}
+
+.project-unlocked-icon {
+    color: var(--bg-card);
+    stroke-width: 3;
+}
+
+.stage-msg-box {
+    width: 100%;
+    background-color: var(--accent);
+    border-radius: 12px;
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+}
+
+
+.stage-msg-box::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid var(--accent);
+    z-index: 10;
+}
+
+.stage-msg-box::after {
+    content: '';
+    position: absolute;
+    left: -19px;
+    top: 18px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 19px solid var(--orange);
+
+    z-index: 9;
+}
+
+.stage-mascot {
+    image-rendering: pixelated;
+    animation: stageMascotFloat 3s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes stageMascotFloat {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.stage-msg-text {
+    font-size: 20px;
+    color: var(--bg-main);
+}
+
+.stage-card {
+    background-color: #FFB531;
+}
+
+.stage-header {
+    background-color: var(--orange);
+}
+
+.stage-content {
+    color: var(--bg-main);
+}
+
+.stage-text {
+    line-height: 1.5;
+}
+
+.stage-link {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.stage-link-icon {
+    color: var(--bg-card);
+    background-color: var(--orange);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.btn-start-project {
+    background-color: var(--orange);
+    border: none;
+    font-weight: bold;
+    color: var(--bg-main) !important;
+}
+
+.btn-start-project:hover {
+    background-color: #754e29;
+    border: none;
+    font-weight: bold;
+    color: white !important;
+}
+
+.stage-title {
+    font-size: 1.1rem;
+}
+
+.stage-text,
+.stage-list-text {
+    color: var(--text-stage);
+    font-size: 0.95rem;
+}
+
+.stage-list-text {
+    padding-left: 1.2rem;
+}
+
+.stage-sublist {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+
+.completed-card {
+    background-color: #FFB531;
+}
+
+.completed-header {
+    background-color: var(--accent-dark);
+}
+
+.completed-body {
+    color: #1a1a1a;
+}
+
+.completed-mascot {
+    image-rendering: pixelated;
+}
+
+.completed-text {
+    line-height: 1.4;
+}
+
+.completed-cert-box {
+    background-color: var(--text-stage);
+}
+
+.btn-download-cert {
+    background-color: var(--accent);
+    letter-spacing: 1px;
+    border: none;
+    font-weight: bold;
+    color: #1a1a1a;
+    transition: opacity 0.2s ease;
+}
+
+.cert-download-icon {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.title-etapas {
+    color: var(--bg-main);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.stage-resource-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
+.stage-resource-link strong {
+    font-weight: bold;
+}
+
+.stage-link-text {
+    font-size: 16px !important;
+    margin-bottom: 0;
+}
+
+/* --- ESTILOS DO PROJETO CONCLUÍDO (Completed - Novo Estilo) --- */
+
+.completed-card-light {
+    background-color: var(--bg-light-soft);
+    /* Fundo claro */
+    border: 1px solid var(--border-soft);
+    /* Borda suave */
+    border-radius: 12px;
+    /* Cantos arredondados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Sombra suave */
+    text-align: center;
+    /* Centraliza todo o conteúdo */
+}
+
+.completed-header-light {
+    background-color: var(--accent-light-soft);
+    /* Fundo verde claro */
+    color: var(--accent-soft);
+    /* Texto verde */
+    padding: 1.5rem;
+    /* Espaçamento interno */
+    border-bottom: 1px solid var(--border-soft);
+    /* Borda inferior sutil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza ícone e texto */
+    gap: 1rem;
+}
+
+.completed-header-light .completed-title {
+    font-size: 1.8rem;
+    /* Título maior */
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--accent-soft);
+}
+
+.completed-body-light {
+    padding: 10px;
+}
+
+.completed-mascot-row-light {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.completed-mascot-light {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid var(--accent-soft);
+    object-fit: cover;
+    animation: stageMascotFloat 1s ease-in-out infinite;
+    position: relative;
+}
+
+.completed-main-message-light h4 {
+    font-size: 2.2rem;
+    color: var(--accent-soft);
+    margin-bottom: 0.8rem;
+}
+
+.completed-main-message-light p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-primary-soft);
+}
+
+.completed-cert-box-light {
+    background-color: var(--accent-light-soft);
+    border: 1px solid var(--accent-soft);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.completed-cert-box-light h5 {
+    font-size: 1.5rem;
+    /* Título do certificado */
+    color: var(--text-primary-soft);
+    margin-bottom: 1rem;
+}
+
+.completed-cert-box-light p {
+    font-size: 1rem;
+    color: var(--text-primary-soft);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.btn-download-cert-light {
+    background-color: var(--accent);
+    color: var(--bg-main);
+    font-weight: bold;
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    font-size: 1.1rem;
+}
+
+.btn-download-cert-light:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+.cert-download-icon-light {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    margin-right: 10px;
+    color: var(--bg-main);
+}
+@media (min-width: 768px) {
+    .completed-mascot-row-light {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .completed-main-message-light {
+        text-align: left;
+    }
+}
+
+.btn-download-cert-base {
+    background-color: var(--orange) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.btn-download-cert-light {
+    background-color: var(--accent-soft);
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.btn-download-cert-light:hover {
+    background-color: darken(var(--accent-soft), 10%);
+    transform: translateY(-2px);
+}
+
+.stage-resource-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.05);
+    /* Fundo base */
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    /* Adicionei 'transform' para o efeito hover */
+}
+
+/* NOVO: Estilo de Hover */
+.stage-resource-link:hover {
+    background-color: rgba(255, 179, 0, 0.5);
+    /* Cor de destaque amarela semi-transparente */
+    border: 1px solid var(--accent);
+    /* Opcional: Adiciona uma borda do seu acento */
+    transform: translateY(-2px);
+    /* Efeito de elevação sutil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
 }

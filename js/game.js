@@ -22,13 +22,13 @@ const MISSIONS = [
   { id: 'desafio_semana', title: 'Desafio da semana: um app de inclusão digital', xp: 300, repeatable: false, weekly: true, url: '/desafio-semanal' }
 ]
 
-const BADGE_DEFS = [
-  { id: 'first_mission', name: 'Primeira Missão', desc: 'Concluiu a primeira missão.', emoji: '🌟' },
-  { id: '500_xp', name: '500 XP', desc: 'Atingiu 500 XP no total.', emoji: '⚡' },
-  { id: 'streak_3', name: 'Persistência 3x', desc: 'Completou missões em 3 dias seguidos.', emoji: '🔥' },
-  { id: 'helper', name: 'Ajudante', desc: 'Ajudou colegas (3x no Social).', emoji: '🤝' },
-  { id: 'builder', name: 'Construtor', desc: 'Concluiu 3 missões de Prática.', emoji: '🛠️' }
-]
+// const BADGE_DEFS = [
+//   { id: 'first_mission', name: 'Primeira Missão', desc: 'Concluiu a primeira missão.', emoji: '🌟' },
+//   { id: '500_xp', name: '500 XP', desc: 'Atingiu 500 XP no total.', emoji: '⚡' },
+//   { id: 'streak_3', name: 'Persistência 3x', desc: 'Completou missões em 3 dias seguidos.', emoji: '🔥' },
+//   { id: 'helper', name: 'Ajudante', desc: 'Ajudou colegas (3x no Social).', emoji: '🤝' },
+//   { id: 'builder', name: 'Construtor', desc: 'Concluiu 3 missões de Prática.', emoji: '🛠️' }
+// ]
 
 const state = loadState() || {
   xp: 0,
@@ -36,7 +36,10 @@ const state = loadState() || {
   completed: {},
   badges: {},
   lastActiveDay: null,
-  streakDays: 0
+  streakDays: 0,
+  // NOVOS CAMPOS PARA O MASCOTE
+  currentMascotMessage: "Muito prazer! Eu sou o Vovô Favo. Vamos transformar conhecimento em XP!",
+  isMascotBubbleHidden: false
 }
 
 function saveState() {
@@ -131,6 +134,11 @@ function typeWriter(element, text, speed = 25) {
 function setBubble(msg) {
   if (!elMascotBubble) return
 
+  // 1. ATUALIZA E SALVA A NOVA MENSAGEM
+  state.currentMascotMessage = msg;
+  state.isMascotBubbleHidden = false; // Se uma nova mensagem é definida, o balão deve estar visível
+  saveState();
+
   elMascotBubble.innerHTML = ''
 
   const closeBtnHTML = `
@@ -150,6 +158,9 @@ function setBubble(msg) {
   if (newCloseBtn) {
     newCloseBtn.addEventListener('click', () => {
       elMascotBubble.classList.add('hidden');
+      // 2. SALVA O ESTADO ESCONDIDO
+      state.isMascotBubbleHidden = true;
+      saveState();
     });
   }
 
@@ -162,9 +173,16 @@ function setBubble(msg) {
   elMascotBubble.classList.add('mascot-pop')
 }
 
+// BLOCO DE INICIALIZAÇÃO CORRIGIDO
 if (elMascotBubble) {
-  const initialText = elMascotBubble.textContent.trim()
-  setBubble(initialText)
+  // Carrega a última mensagem salva, ou usa o conteúdo do HTML como fallback
+  const initialText = state.currentMascotMessage || elMascotBubble.textContent.trim();
+  setBubble(initialText);
+
+  // Restaura o estado de visibilidade
+  if (state.isMascotBubbleHidden) {
+    elMascotBubble.classList.add('hidden');
+  }
 }
 
 function renderLevel() {
@@ -276,62 +294,65 @@ function renderFinalProject() {
         `
   } else {
     finalBox.innerHTML = `
-        <div class="final-project-container position-relative" style="background-color: #2D176B; border: 3px solid #FFB531; border-radius: 16px; overflow: hidden;">
-            
-            <div class="d-flex justify-content-between align-items-center p-3" style="background-color: #FFB531; color: #2D176B;">
-                <h5 class="mb-0 fw-bold ps-2">Projeto Final: Website Interativo para ONG</h5>
-                <div class="pe-2">
-                    <i data-lucide="unlock" class="lucide-unlock" style="color: #2D176B; stroke-width: 2.5;"></i>
-                </div>
+    <div class="final-project-container position-relative final-project-unlocked">
+        
+        <div class="d-flex justify-content-between align-items-center p-3 final-project-header">
+            <h5 class="mb-0 fw-bold ps-2">O FAVO MESTRE: Projeto de Portfólio (Website ONG)</h5>
+            <div class="pe-2">
+                <i data-lucide="unlock" class="lucide-unlock project-unlocked-icon"></i>
             </div>
+        </div>
 
-            <div class="p-4" id="project-stages-container">
-                
-                <div class="d-flex align-items-start gap-3 mb-4">
-                    <img src="img/abelha-de-oculos.png" width="80" style="image-rendering: pixelated; transform: scaleX(-1);"> 
-                    <div class="p-3 rounded-3 text-dark shadow-sm" style="background-color: #FFB531; flex: 1; border-radius: 12px;">
-                        <p class="mb-0 fw-semibold" style="font-size: 0.95rem; color: #4A371F;">
-                            É hora de mostrar seu talento na prática. Inicie seu portfólio com este projeto profissional e prepare-se para chamar a atenção do mercado.
-                        </p>
-                    </div>
+        <div class="p-4 final-project-body" id="project-stages-container">
+            
+            <div class="d-flex mb-2 mascot-stage-wrapper">
+    <div class="mascot-img-container">
+        <img src="img/abelha-de-oculos.png" width="130" class="stage-mascot"> 
+    </div>
+    
+    <div class="p-3 rounded-3 text-dark shadow-sm stage-msg-box">
+        <p class="mb-0 fw-semibold stage-msg-text">
+            A coroa de sua jornada! Este é o seu teste de competência final. Conclua-o para iniciar seu portfólio profissional e chamar a atenção do mercado.
+        </p>
+    </div>
+</div>
+
+            <div class="rounded-4 overflow-hidden shadow-sm stage-card">
+                <div class="p-3 d-flex align-items-center gap-2 stage-header">
+                    <img src="img/favo.png" width="50" alt="ícone">
+                    <h5 class="mb-0 title-etapas">ETAPA 1: Entenda o Desafio</h5>
                 </div>
 
-                <div class="rounded-4 overflow-hidden shadow-sm" style="background-color: #FFB531;">
-                    <div class="p-3 d-flex align-items-center gap-2" style="background-color: #E68A00;">
-                        <img src="img/favo.png" width="50" alt="ícone">
-                        <h5 class="mb-0 fw-bold text-dark">ETAPA 1: Entenda o Desafio</h5>
+                <div class="p-4 stage-content">
+                    <h6 class="fw-bold mb-2">Qual é o objetivo deste projeto?</h6>
+                    <p class="mb-3 stage-text">
+                        O seu desafio é criar um <strong>Website Institucional para uma ONG fictícia</strong>. Este é o seu projeto de portfólio que valida todas as suas habilidades essenciais em desenvolvimento front-end.
+                    </p>
+                    <h6 class="fw-bold mb-2">O que Esperamos?</h6>
+                    <p class="mb-3 stage-text">
+                         Um site completo com <strong>HTML</strong>, <strong>CSS</strong>, <strong>Flexbox</strong> e <strong>Design Responsivo</strong>. Deve incluir página inicial, menu, seção "Sobre", formulário de contato, e funcionar perfeitamente no celular.
+                    </p>
+                    <h6 class="fw-bold mb-3">Materiais de Apoio</h6>
+                    <div class="d-flex flex-column gap-2 mb-4">
+                        <a href="https://www.awwwards.com/websites/non-profit/" target="_blank" class="stage-resource-link">
+    <i data-lucide="lightbulb" class="stage-link-icon"></i>
+    <small class="mb-0 stage-link-text">Exemplo de projeto similar para inspiração. <br><strong>Link:</strong> Awwwards - Non-Profit</small>
+</a>
+<a href="https://roadmap.sh/frontend" target="_blank" class="stage-resource-link">
+    <i data-lucide="folder" class="stage-link-icon"></i>
+    <small class="mb-0 stage-link-text">Guia rápido de requisitos para portfólio. <br><strong>Link:</strong> Frontend Roadmap</small>
+</a>
                     </div>
 
-                    <div class="p-4 text-dark">
-                        <h6 class="fw-bold mb-2">Qual é o objetivo deste projeto?</h6>
-                        <p class="small mb-3" style="line-height: 1.5;">
-                            O seu desafio é criar um <strong>Website Institucional para uma ONG fictícia</strong>. Este projeto testará suas habilidades em HTML, CSS, Flexbox e Design Responsivo.
-                        </p>
-                        <p class="small fw-bold mb-4">
-                            O que Esperamos: Um site com página inicial, menu de navegação, seção de "Sobre", formulário de contato e que funcione bem no celular.
-                        </p>
-                        <h6 class="fw-bold mb-3">Materiais de Apoio</h6>
-                        <div class="d-flex flex-column gap-2 mb-4">
-                            <a href="#" class="d-flex align-items-center gap-3 text-dark text-decoration-none p-2 rounded hover-effect" style="background-color: rgba(0,0,0,0.05);">
-                                <i data-lucide="lightbulb" style="width: 20px; color: #2D176B;"></i>
-                                <small class="mb-0">Exemplo de projeto similar para inspiração (NÃO COPIAR!). <strong>Link: exemplo.com.br</strong></small>
-                            </a>
-                            <a href="#" class="d-flex align-items-center gap-3 text-dark text-decoration-none p-2 rounded hover-effect" style="background-color: rgba(0,0,0,0.05);">
-                                <i data-lucide="folder" style="width: 20px; color: #2D176B;"></i>
-                                <small class="mb-0">Guia rápido de requisitos para portfólio. <strong>Link: exemplo.com.br</strong></small>
-                            </a>
-                        </div>
-
-                        <button class="btn w-100 text-white fw-bold py-3 rounded-3 shadow-sm" 
-                                style="background-color: #3E2723; letter-spacing: 1px; border: none;"
-                                onclick="renderProjectStage2()">
-                            INICIAR PROJETO
-                        </button>
-                    </div>
+                    <button class="btn w-100 text-white fw-bold py-3 rounded-3 shadow-sm btn-start-project" 
+                        onclick="renderProjectStage2()">
+                        INICIAR PROJETO
+                    </button>
                 </div>
             </div>
         </div>
-        `
+    </div>
+`
   }
 
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -343,48 +364,47 @@ function renderProjectStage2() {
   const container = document.getElementById('project-stages-container');
 
   container.innerHTML = `
-        <div class="d-flex align-items-start gap-3 mb-4">
-            <img src="img/abelha-de-oculos.png" width="80" style="image-rendering: pixelated; transform: scaleX(-1);"> 
-            <div class="p-3 rounded-3 text-dark shadow-sm" style="background-color: #FFB531; flex: 1; border-radius: 12px;">
-                <p class="mb-0 fw-semibold" style="font-size: 0.95rem; color: #4A371F;">
+        <div class="d-flex mb-4 w-100">
+            <img src="img/abelha-de-oculos.png" width="130" class="stage-mascot"> 
+            <div class="p-3 rounded-3 text-dark shadow-sm stage-msg-box">
+                <p class="mb-0 fw-semibold stage-msg-text">
                     Mãos à obra! Siga as instruções abaixo com atenção.
                 </p>
             </div>
         </div>
 
-        <div class="rounded-4 overflow-hidden shadow-sm" style="background-color: #FFB531;">
+        <div class="rounded-4 overflow-hidden shadow-sm stage-card">
             
-            <div class="p-3 d-flex align-items-center gap-2" style="background-color: #E68A00;">
+            <div class="p-3 d-flex align-items-center gap-2 stage-header">
                 <img src="/img/favo.png" width="50" alt="ícone">
-                <h5 class="mb-0 fw-bold text-dark">ETAPA 2: Desenvolva o Projeto</h5>
+                <h5 class="mb-0 title-etapas">ETAPA 2: Desenvolva o Projeto</h5>
             </div>
 
-            <div class="p-4 text-dark">
-                <h6 class="fw-bold mb-2" style="font-size: 1.1rem;">Foco</h6>
-                <p class="mb-4" style="font-size: 0.95rem; color: #3E2723;">
+            <div class="p-4 stage-content">
+                <h6 class="fw-bold mb-2 stage-title">Foco</h6>
+                <p class="mb-4 stage-text">
                     Agora é com você! Dedique-se ao desenvolvimento do seu projeto. Lembre-se de aplicar tudo o que aprendeu.
                 </p>
 
-                <h6 class="fw-bold mb-2" style="font-size: 1.1rem;">Dicas</h6>
-                <ul class="mb-4" style="color: #3E2723; font-size: 0.95rem; padding-left: 1.2rem;">
+                <h6 class="fw-bold mb-2 stage-title">Dicas</h6>
+                <ul class="mb-4 stage-list-text">
                     <li class="mb-2">O GitHub é seu currículo (Use desde o Dia 1)</li>
                     <li class="mb-2">O README.md é a "capa" do seu projeto</li>
                     <li class="mb-2">Peça ajuda em Fóruns Externos
-                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <ul class="stage-sublist">
                             <li>O que você tentou fazer.</li>
                             <li>O código que você usou (um print ou link do GitHub).</li>
                             <li>Qual foi a mensagem de erro exata.</li>
                         </ul>
                     </li>
                     <li class="mb-2">Ative o "Modo Debug":
-                        <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <ul class="stage-sublist">
                             <li>Seu código vai quebrar. Isso não é falha, é o processo. Use as ferramentas de desenvolvedor do seu navegador (clique com o botão direito > "Inspecionar") para ver os erros no "Console" e entender o que o navegador está tentando fazer.</li>
                         </ul>
                     </li>
                 </ul>
 
-                <button class="btn w-100 text-white fw-bold py-3 rounded-3 shadow-sm" 
-                        style="background-color: #3E2723; letter-spacing: 1px; border: none;"
+                <button class="btn w-100 text-white fw-bold py-3 rounded-3 shadow-sm btn-start-project" 
                         onclick="renderProjectCompleted()">
                     JÁ DESENVOLVI MEU PROJETO
                 </button>
@@ -401,41 +421,35 @@ function renderProjectCompleted() {
   const container = document.getElementById('project-stages-container');
 
   container.innerHTML = `
-        <div class="final-project-completed-card rounded-4 overflow-hidden shadow-sm" style="background-color: #FFB531;">
+    <div class="final-project-completed-card rounded-4 overflow-hidden shadow-sm completed-card-light">
+
+        <div class="completed-body-light">
             
-            <div class="p-3 d-flex align-items-center gap-2" style="background-color: #E68A00;">
-                <img src="img/favo.png" width="50" alt="ícone">
-                <h5 class="mb-0 fw-bold text-dark">PROJETO CONCLUÍDO!</h5>
+            <div class="completed-mascot-row-light">
+                <img src="img/abelha-idoso-comemorando.webp" class="completed-mascot-light">
+                <div class="completed-main-message-light">
+                    <h4 class="fw-bold mb-2">Parabéns!</h4>
+                    <p class="mb-0">
+                        Seu comprometimento e talento te trouxeram até aqui. Este não é o fim, é o começo da sua nova carreira na tecnologia, repleta de oportunidades que você conquistou com as próprias mãos. O futuro é seu. Brilhe!
+                    </p>
+                </div>
             </div>
 
-            <div class="p-4 text-dark">
-                <div class="d-flex align-items-center gap-4 mb-4">
-                    <img src="img/abelha-idoso-comemorando.webp" width="120" style="image-rendering: pixelated;">
-                    <div>
-                        <h4 class="fw-bold mb-2">Parabéns!</h4>
-                        <p class="small mb-0" style="line-height: 1.4;">
-                            Seu comprometimento e talento te trouxeram até aqui. Este não é o fim, é o começo da sua nova carreira na tecnologia, repleta de oportunidades que você conquistou com as próprias mãos. O futuro é seu. Brilhe!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="rounded-3 p-4 text-center mt-4" style="background-color: #3E2723;">
-                    <h5 class="fw-bold text-white mb-3">Seu Certificado de Conclusão está pronto!</h5>
-                    <p class="small text-white-50 mb-4" style="line-height: 1.4;">
-                        Você concluiu seu primeiro projeto profissional "O Favo Mestre!" com sucesso! Este é um marco importante na sua jornada no MelWare.
-                    </p>
-                    <button class="btn text-dark fw-bold py-3 px-5 rounded-3 shadow-sm" 
-                            style="background-color: #FFB531; letter-spacing: 1px; border: none;"
-                            onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'"
-                            onclick="alert('Baixar Certificado!')">
-                        <i data-lucide="download" style="width: 20px; vertical-align: middle; margin-right: 8px;"></i>
-                        BAIXAR CERTIFICADO DE CONCLUSÃO (PDF)
-                    </button>
-                </div>
+            <div class="completed-cert-box-light">
+                <h5 class="fw-bold mb-3">Seu Certificado de Conclusão está pronto!</h5>
+                <p class="mb-4">
+                    Você concluiu seu primeiro projeto profissional "O Favo Mestre!" com sucesso! Este é um marco importante na sua jornada no MelWare.
+                </p>
+                <a href="./doc/Melware_certificado.pdf" download="Melware_certificado.pdf" 
+                    class="btn-download-cert-light btn-download-cert-base" 
+                   
+                    <i data-lucide="download" class="cert-download-icon-light"></i>
+                    BAIXAR CERTIFICADO DE CONCLUSÃO (PDF)
+                </a>
             </div>
         </div>
-    `;
-
+    </div>
+`;
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
     lucide.createIcons();
   }
@@ -524,6 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mascotImg && bubble) {
     mascotImg.addEventListener('click', () => {
       bubble.classList.remove('hidden');
+      // 3. SALVA O ESTADO VISÍVEL
+      state.isMascotBubbleHidden = false;
+      saveState();
     });
   }
 });
