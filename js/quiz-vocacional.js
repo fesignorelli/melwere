@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             opcoes: [
                 { texto: "Prototipar uma tela no Figma", pontua: ["uxui"] },
                 { texto: "Construir uma API", pontua: ["backend"] },
-                { texto: "Criar uma animação interativa", pontua: ["frontend"] },
+                { texto: "Criar uma animação interativa na tela", pontua: ["frontend"] },
                 { texto: "Subir um app Android/iOS na loja", pontua: ["mobile"] }
             ]
         },
@@ -25,15 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
             texto: "Como você prefere trabalhar?",
             opcoes: [
                 { texto: "Com foco em design e experiência", pontua: ["uxui", "frontend"] },
-                { texto: "De forma analítica e lógica", pontua: ["backend", "dados", "seguranca"] },
-                { texto: "Com foco em gestão e organização", pontua: ["gestao"] },
-                { texto: "Com ferramentas de automação e cloud", pontua: ["infra", "seguranca"] }
+                { texto: "Com foco em análise lógica e problemas complexos", pontua: ["backend", "dados", "seguranca"] },
+                { texto: "Com foco em gestão e organização de equipes", pontua: ["gestao"] },
+                { texto: "Com foco em automatizar e manter sistemas", pontua: ["infra", "seguranca"] }
             ]
         },
         {
             texto: "Qual dessas ferramentas/linguagens você gostaria de aprender primeiro?",
             opcoes: [
-                { texto: "HTML/CSS/JS", pontua: ["frontend"] },
+                { texto: "HTML/CSS/JavaScript", pontua: ["frontend"] },
                 { texto: "Java, C# ou Python", pontua: ["backend", "dados"] },
                 { texto: "Flutter ou React Native", pontua: ["mobile"] },
                 { texto: "Figma", pontua: ["uxui"] }
@@ -42,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             texto: "Você se imagina mais:",
             opcoes: [
-                { texto: "Criando layouts", pontua: ["uxui", "frontend"] },
+                { texto: "Criando sites lindos e modernos", pontua: ["uxui", "frontend"] },
                 { texto: "Codando regras de negócio", pontua: ["backend"] },
                 { texto: "Pensando na estrutura do banco de dados", pontua: ["dados", "backend"] },
-                { texto: "Lidando com equipes e entregas", pontua: ["gestao"] }
+                { texto: "Liderando projetos e equipes", pontua: ["gestao"] }
             ]
         }
     ]

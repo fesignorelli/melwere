@@ -9,17 +9,90 @@ const LEVELS = [
 ]
 
 const MISSIONS = [
-  { id: 'quiz_vocacional', title: 'Complete o Quiz Vocacional', xp: 50, repeatable: false, url: '/quiz-vocacional' },
-  { id: 'artigo_ux', title: 'Leia: O que faz um profissional de UX/UI?', xp: 20, repeatable: false, url: '/artigos/o-que-e-ux-ui' },
-  { id: 'logica_mod1', title: 'Conclua o módulo: Lógica de Programação (intro)', xp: 100, repeatable: false, url: '/curso/logica-modulo-1' },
-  { id: 'calc_js', title: 'Crie uma calculadora simples em JavaScript', xp: 150, repeatable: false, url: '/projeto/calc-js' },
-  { id: 'primeiro_commit', title: 'Faça seu primeiro commit (Git) local', xp: 50, repeatable: true, capPerDay: 1, url: '/recurso/git-intro' },
-  { id: 'mini_portfolio', title: 'Publique um mini portfólio (HTML/CSS)', xp: 120, repeatable: false, url: '/projeto/mini-portfolio' },
-  { id: 'ajude_forum', title: 'Ajude alguém no fórum/discussão (deixe um feedback)', xp: 40, repeatable: true, capPerDay: 2, url: '/forum' },
-  { id: 'grupo_estudos', title: 'Participe de um grupo de estudos (30min+)', xp: 70, repeatable: true, capPerWeek: 3, url: '/grupos-estudo' },
-  { id: 'perfil_prof', title: 'Monte seu perfil com habilidades e interesses', xp: 30, repeatable: false, url: '/perfil/editar' },
-  { id: 'sim_entrevista', title: 'Faça um simulado de entrevista (10 perguntas)', xp: 100, repeatable: false, url: '/simulado-entrevista' },
-  { id: 'desafio_semana', title: 'Desafio da semana: um app de inclusão digital', xp: 300, repeatable: false, weekly: true, url: '/desafio-semanal' }
+  { 
+    id: 'quiz_vocacional', 
+    title: 'Descubra seu perfil: Complete o Quiz Vocacional', 
+    xp: 20, 
+    repeatable: false, 
+    url: '/quiz-vocacional',
+    img: 'img/missoes/quiz-capa.png' 
+  },
+  { 
+    id: 'artigo_ux', 
+    title: 'Curso: HTML5 e CSS3 (Construindo a interface)', 
+    xp: 100, 
+    repeatable: false, 
+    url: 'https://www.cursoemvideo.com/curso/html5-css3-modulo1/',
+    img: 'img/missoes/curso-em-video.png'
+  },
+  { 
+    id: 'logica_mod1', 
+    title: 'Curso: Algoritmos e Lógica de Programação', 
+    xp: 150, 
+    repeatable: false, 
+    url: 'https://www.cursoemvideo.com/curso/curso-de-algoritmo/',
+    img: 'img/missoes/curso-em-video.png'
+  },
+  { 
+    id: 'calc_js', 
+    title: 'Curso: JavaScript (Dando vida ao site)', 
+    xp: 120, 
+    repeatable: false, 
+    url: 'https://www.cursoemvideo.com/curso/javascript/',
+    img: 'img/missoes/curso-em-video.png'
+  },
+  { 
+    id: 'primeiro_commit', 
+    title: 'Vídeo: Git e GitHub para Iniciantes', 
+    xp: 70, 
+    repeatable: true, 
+    capPerDay: 1, 
+    url: 'https://www.youtube.com/playlist?list=PLlAbYrG2TPFfCNpM91aI70I-6Mh57F51n',
+    img: 'https://img.youtube.com/vi/IBClN6VpJDw/hqdefault.jpg'
+  },
+  { 
+    id: 'mini_portfolio', 
+    title: 'Prática: Resolva um desafio de código no Codier', 
+    xp: 50, 
+    repeatable: false, 
+    url: 'https://codier.io/challenges',
+    img: 'img/missoes/codier.png' 
+  },
+  { 
+    id: 'ajude_forum', 
+    title: 'Vídeo: Como usar o StackOverflow a seu favor?', 
+    xp: 30, 
+    repeatable: true, 
+    capPerDay: 2, 
+    url: 'https://www.youtube.com/watch?v=VY4tOs4UPhQ',
+    img: 'https://img.youtube.com/vi/VY4tOs4UPhQ/hqdefault.jpg'
+  },
+  { 
+    id: 'grupo_estudos', 
+    title: 'Pesquise uma dúvida técnica no Stackoverflow', 
+    xp: 40, 
+    repeatable: true, 
+    capPerWeek: 3, 
+    url: 'https://stackoverflow.com/questions',
+    img: 'img/missoes/stackoverflow.png'
+  },
+  { 
+    id: 'sim_entrevista', 
+    title: 'Curso: Preparação para o Mercado (Rocketseat Discover)', 
+    xp: 100, 
+    repeatable: false, 
+    url: 'https://www.rocketseat.com.br/discover',
+    img: 'img/missoes/rocketseat.png'
+  },
+  { 
+    id: 'desafio_semana', 
+    title: 'Prática: 5 Projetos HTML + CSS para Iniciantes', 
+    xp: 300, 
+    repeatable: false, 
+    weekly: true, 
+    url: 'https://www.youtube.com/watch?v=cudOY_pI2Fo',
+    img: 'https://img.youtube.com/vi/cudOY_pI2Fo/hqdefault.jpg'
+  }
 ]
 
 const BADGE_DEFS = [
@@ -194,10 +267,14 @@ function missionCard(m) {
   const isRepeatable = !!m.repeatable;
   const canDo = isRepeatable ? clampDailyWeekly(m, m.id) : doneCount === 0;
 
+  // DEFINIR A IMAGEM: Se m.img existir, usa ela. Se não, usa a padrão.
+  const missionImage = m.img ? m.img : 'img/missoes/exemplo.png';
+
   const col = document.createElement('div');
   col.className = 'col-md-6 mission-card-col';
 
   const wrap = document.createElement('div');
+  // Mantive suas classes originais
   wrap.className = `card text-light shadow-sm rounded-3 overflow-hidden mission-card-wrap ${!canDo ? 'mission-completed' : ''}`;
   wrap.style.height = 'auto';
 
@@ -216,13 +293,14 @@ function missionCard(m) {
         `;
   }
 
+  // AQUI ESTÁ A MUDANÇA PRINCIPAL NA TAG <IMG>
   wrap.innerHTML = `
-        <a href="${m.url}" class="card-link-overlay text-decoration-none text-white">
-            <img src="img/missoes/exemplo.png" class="card-img-top" style="height: 160px; object-fit: cover;">
+        <a href="${m.url}" target="_blank" class="card-link-overlay text-decoration-none text-white">
+            <img src="${missionImage}" class="card-img-top" style="height: 160px; object-fit: cover;" alt="${m.title}">
         </a>
         <div class="card-body d-flex flex-column justify-content-between">
             <div>
-                <a href="${m.url}" class="text-white text-decoration-none">
+                <a href="${m.url}" target="_blank" class="text-white text-decoration-none">
                     <h5 class="card-title">${m.title}</h5>
                 </a>
                 <p class="mb-2"><span class="badge">+${m.xp} XP</span></p>
@@ -238,7 +316,6 @@ function missionCard(m) {
 
   if (canDo) {
     const button = wrap.querySelector('button');
-
     button.addEventListener('click', (e) => {
       e.stopPropagation();
       e.preventDefault();

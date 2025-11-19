@@ -170,6 +170,10 @@ body {
   }
 }
 
+.mt-4.d-flex.justify-content-between.mb-2{
+display: block !important;
+}
+
 .quiz-btn {
   background-color: var(--accent);
   color: var(--text-dark);
