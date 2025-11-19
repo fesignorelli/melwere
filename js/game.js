@@ -22,13 +22,13 @@ const MISSIONS = [
   { id: 'desafio_semana', title: 'Desafio da semana: um app de inclusão digital', xp: 300, repeatable: false, weekly: true, url: '/desafio-semanal' }
 ]
 
-// const BADGE_DEFS = [
-//   { id: 'first_mission', name: 'Primeira Missão', desc: 'Concluiu a primeira missão.', emoji: '🌟' },
-//   { id: '500_xp', name: '500 XP', desc: 'Atingiu 500 XP no total.', emoji: '⚡' },
-//   { id: 'streak_3', name: 'Persistência 3x', desc: 'Completou missões em 3 dias seguidos.', emoji: '🔥' },
-//   { id: 'helper', name: 'Ajudante', desc: 'Ajudou colegas (3x no Social).', emoji: '🤝' },
-//   { id: 'builder', name: 'Construtor', desc: 'Concluiu 3 missões de Prática.', emoji: '🛠️' }
-// ]
+const BADGE_DEFS = [
+  { id: 'first_mission', name: 'Primeira Missão', desc: 'Concluiu a primeira missão.', emoji: '🌟' },
+  { id: '500_xp', name: '500 XP', desc: 'Atingiu 500 XP no total.', emoji: '⚡' },
+  { id: 'streak_3', name: 'Persistência 3x', desc: 'Completou missões em 3 dias seguidos.', emoji: '🔥' },
+  { id: 'helper', name: 'Ajudante', desc: 'Ajudou colegas (3x no Social).', emoji: '🤝' },
+  { id: 'builder', name: 'Construtor', desc: 'Concluiu 3 missões de Prática.', emoji: '🛠️' }
+]
 
 const state = loadState() || {
   xp: 0,
@@ -37,7 +37,6 @@ const state = loadState() || {
   badges: {},
   lastActiveDay: null,
   streakDays: 0,
-  // NOVOS CAMPOS PARA O MASCOTE
   currentMascotMessage: "Muito prazer! Eu sou o Vovô Favo. Vamos transformar conhecimento em XP!",
   isMascotBubbleHidden: false
 }
@@ -134,9 +133,7 @@ function typeWriter(element, text, speed = 25) {
 function setBubble(msg) {
   if (!elMascotBubble) return
 
-  // 1. ATUALIZA E SALVA A NOVA MENSAGEM
   state.currentMascotMessage = msg;
-  state.isMascotBubbleHidden = false; // Se uma nova mensagem é definida, o balão deve estar visível
   saveState();
 
   elMascotBubble.innerHTML = ''
@@ -158,7 +155,6 @@ function setBubble(msg) {
   if (newCloseBtn) {
     newCloseBtn.addEventListener('click', () => {
       elMascotBubble.classList.add('hidden');
-      // 2. SALVA O ESTADO ESCONDIDO
       state.isMascotBubbleHidden = true;
       saveState();
     });
@@ -173,13 +169,10 @@ function setBubble(msg) {
   elMascotBubble.classList.add('mascot-pop')
 }
 
-// BLOCO DE INICIALIZAÇÃO CORRIGIDO
 if (elMascotBubble) {
-  // Carrega a última mensagem salva, ou usa o conteúdo do HTML como fallback
   const initialText = state.currentMascotMessage || elMascotBubble.textContent.trim();
   setBubble(initialText);
 
-  // Restaura o estado de visibilidade
   if (state.isMascotBubbleHidden) {
     elMascotBubble.classList.add('hidden');
   }
@@ -270,7 +263,7 @@ function renderBadges() {
   BADGE_DEFS.forEach(b => {
     const earned = !!state.badges[b.id]
     const span = document.createElement('span')
-    span.className = 'relative tip inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-700 bg-slate-800/70'
+    span.className = 'badge-icon-container tip'    
     span.setAttribute('aria-label', b.name)
     span.textContent = b.emoji
     if (!earned) span.style.filter = 'grayscale(1) opacity(.6)'
@@ -334,11 +327,9 @@ function renderFinalProject() {
                     </p>
                     <h6 class="fw-bold mb-3">Materiais de Apoio</h6>
                     <div class="d-flex flex-column gap-2 mb-4">
-                        <a href="https://www.awwwards.com/websites/non-profit/" target="_blank" class="stage-resource-link">
     <i data-lucide="lightbulb" class="stage-link-icon"></i>
     <small class="mb-0 stage-link-text">Exemplo de projeto similar para inspiração. <br><strong>Link:</strong> Awwwards - Non-Profit</small>
 </a>
-<a href="https://roadmap.sh/frontend" target="_blank" class="stage-resource-link">
     <i data-lucide="folder" class="stage-link-icon"></i>
     <small class="mb-0 stage-link-text">Guia rápido de requisitos para portfólio. <br><strong>Link:</strong> Frontend Roadmap</small>
 </a>
@@ -538,7 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mascotImg && bubble) {
     mascotImg.addEventListener('click', () => {
       bubble.classList.remove('hidden');
-      // 3. SALVA O ESTADO VISÍVEL
       state.isMascotBubbleHidden = false;
       saveState();
     });

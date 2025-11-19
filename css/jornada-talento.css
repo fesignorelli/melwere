@@ -487,40 +487,27 @@ button.btn-dark {
     margin-bottom: 0;
 }
 
-/* --- ESTILOS DO PROJETO CONCLUÍDO (Completed - Novo Estilo) --- */
-
 .completed-card-light {
     background-color: var(--bg-light-soft);
-    /* Fundo claro */
     border: 1px solid var(--border-soft);
-    /* Borda suave */
     border-radius: 12px;
-    /* Cantos arredondados */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    /* Sombra suave */
     text-align: center;
-    /* Centraliza todo o conteúdo */
 }
 
 .completed-header-light {
     background-color: var(--accent-light-soft);
-    /* Fundo verde claro */
     color: var(--accent-soft);
-    /* Texto verde */
     padding: 1.5rem;
-    /* Espaçamento interno */
     border-bottom: 1px solid var(--border-soft);
-    /* Borda inferior sutil */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Centraliza ícone e texto */
     gap: 1rem;
 }
 
 .completed-header-light .completed-title {
     font-size: 1.8rem;
-    /* Título maior */
     font-weight: 600;
     margin-bottom: 0;
     color: var(--accent-soft);
@@ -573,7 +560,6 @@ button.btn-dark {
 
 .completed-cert-box-light h5 {
     font-size: 1.5rem;
-    /* Título do certificado */
     color: var(--text-primary-soft);
     margin-bottom: 1rem;
 }
@@ -608,6 +594,7 @@ button.btn-dark {
     margin-right: 10px;
     color: var(--bg-main);
 }
+
 @media (min-width: 768px) {
     .completed-mascot-row-light {
         flex-direction: row;
@@ -655,21 +642,32 @@ button.btn-dark {
     text-decoration: none;
     color: #1a1a1a;
     background-color: rgba(0, 0, 0, 0.05);
-    /* Fundo base */
     padding: 0.5rem;
     border-radius: 0.25rem;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    /* Adicionei 'transform' para o efeito hover */
 }
 
-/* NOVO: Estilo de Hover */
 .stage-resource-link:hover {
     background-color: rgba(255, 179, 0, 0.5);
-    /* Cor de destaque amarela semi-transparente */
     border: 1px solid var(--accent);
-    /* Opcional: Adiciona uma borda do seu acento */
     transform: translateY(-2px);
-    /* Efeito de elevação sutil */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
+}
+
+.badge-icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    background-color: var(--bg-card);
+    color: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.4),
+        0 0 8px rgba(255, 179, 0, 0.5);
+
 }
