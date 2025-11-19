@@ -36,7 +36,7 @@ O MelWare busca ajudar jovens e adultos a descobrirem seu caminho no universo da
 
 ---
 
-## 📸 Preview
+## 🖇️ Nosso Linktree:
 
-> *(Adicione aqui prints ou GIFs do projeto)*
+- Linktree: https://linktr.ee/melwere
 
